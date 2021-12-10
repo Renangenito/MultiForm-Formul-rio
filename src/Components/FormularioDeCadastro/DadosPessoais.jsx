@@ -2,7 +2,7 @@ import { Button, TextField, Switch, FormControlLabel } from '@material-ui/core';
 import React from 'react';
 import { useState } from 'react';
 
-function FormularioDeCadastro({ aoEnviar, validarCPF }) {
+function DadosPessoais({ aoEnviar, validarCPF }) {
     const [nome, setNome] = useState("")
     const [sobrenome, setSobrenome] = useState("")
     const [cpf, setCpf] = useState("")
@@ -34,9 +34,11 @@ function FormularioDeCadastro({ aoEnviar, validarCPF }) {
             <TextField
                 onChange={e => setCpf(e.target.value)}
                 onBlur={()=>{
-                    const ehValido = validarCPF(cpf)
-                    setErros({cpf: ehValido})
-                }}
+                   const eHvalido = validarCPF(cpf)
+                    setErros({cpf: eHvalido})
+                }
+                   
+                }
                 id="cpf"
                 value={cpf}
                 error={erros.cpf.valida}
@@ -64,4 +66,4 @@ function FormularioDeCadastro({ aoEnviar, validarCPF }) {
     )
 }
 
-export default FormularioDeCadastro;
+export default DadosPessoais;
