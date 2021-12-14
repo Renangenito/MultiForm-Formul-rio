@@ -22,6 +22,7 @@ function DadosPessoais({ aoEnviar, validarCPF }) {
                 label="Nome"
                 variant="outlined"
                 margin="normal"
+                required
                 fullWidth />
             <TextField
                 onChange={e => setSobrenome(e.target.value)}
@@ -30,6 +31,7 @@ function DadosPessoais({ aoEnviar, validarCPF }) {
                 label="Sobrenome"
                 variant="outlined"
                 margin="normal"
+                required
                 fullWidth />
             <TextField
                 onChange={e => setCpf(e.target.value)}
@@ -46,6 +48,7 @@ function DadosPessoais({ aoEnviar, validarCPF }) {
                 label="CPF"
                 variant="outlined"
                 margin="normal"
+                required
                 fullWidth />
             <FormControlLabel
                 control={
