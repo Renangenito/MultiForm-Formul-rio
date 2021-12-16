@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Step, StepLabel, Stepper, Typography } from "@material-ui/core";
 
-function FormularioDeCadastro({ aoEnviar, validarCPF }) {
+function FormularioDeCadastro({ aoEnviar, validacoes }) {
   const [etapaAtual, setEtapaAtual] = useState(0);
   const [dadosColetados, setDadosColetados] = useState({});
   useEffect(() => {
@@ -15,9 +15,9 @@ function FormularioDeCadastro({ aoEnviar, validarCPF }) {
   });
 
   const formularios = [
-    <DadosUsuario aoEnviar={coletaDados} />,
-    <DadosPessoais aoEnviar={coletaDados} validarCPF={validarCPF} />,
-    <DadosEntrega aoEnviar={coletaDados} />,
+    <DadosUsuario aoEnviar={coletaDados} validacoes={validacoes}/>,
+    <DadosPessoais aoEnviar={coletaDados} validacoes={validacoes} />,
+    <DadosEntrega aoEnviar={coletaDados} validacoes={validacoes}/>,
     <Typography variant="h4" align="center" color="primary">Obrigado por se cadastrar!!</Typography>,
   ];
 

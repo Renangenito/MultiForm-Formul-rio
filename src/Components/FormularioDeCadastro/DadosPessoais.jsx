@@ -2,13 +2,23 @@ import { Button, TextField, Switch, FormControlLabel } from '@material-ui/core';
 import React from 'react';
 import { useState } from 'react';
 
-function DadosPessoais({ aoEnviar, validarCPF }) {
+function DadosPessoais({ aoEnviar, validacoes }) {
     const [nome, setNome] = useState("")
     const [sobrenome, setSobrenome] = useState("")
     const [cpf, setCpf] = useState("")
     const [promocoes, setPromocoes] = useState(true)
     const [novidades, setNovidades] = useState(true)
     const [erros, setErros] = useState({cpf:{valida: false, mensagem: ""}})
+
+    function validarCampos(event){
+       console.log(event.target);
+       const {name, value} = event.target;
+       const eHValido = validacoes[name](value);
+       const novoEstado = {...erros}
+       novoEstado[name] = eHValido;
+       setErros(novoEstado)
+       console.log(novoEstado)
+    } 
 
     return (
         <form onSubmit={e => {
@@ -35,13 +45,9 @@ function DadosPessoais({ aoEnviar, validarCPF }) {
                 fullWidth />
             <TextField
                 onChange={e => setCpf(e.target.value)}
-                onBlur={()=>{
-                   const eHvalido = validarCPF(cpf)
-                    setErros({cpf: eHvalido})
-                }
-                   
-                }
+                onBlur={validarCampos}
                 id="cpf"
+                name="cpf"
                 value={cpf}
                 error={erros.cpf.valida}
                 helperText={erros.cpf.mensagem}
